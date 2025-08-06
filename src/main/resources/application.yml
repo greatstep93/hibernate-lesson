@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: hibernate-lesson
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hibernate_lesson
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  profiles:
+    active: jdbc
