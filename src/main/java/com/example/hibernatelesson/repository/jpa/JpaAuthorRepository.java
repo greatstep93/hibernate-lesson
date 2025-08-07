@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @Profile(value = "jpa")
-public interface JpaAuthorRepository extends JpaRepository<AuthorEntity, Long>, AuthorRepository {
+public interface JpaAuthorRepository extends JpaRepository<AuthorEntity, Integer>, AuthorRepository {
 
     @Query("SELECT DISTINCT a FROM AuthorEntity a LEFT JOIN FETCH a.books ORDER BY a.id")
     List<AuthorEntity> findAllWithBooks();

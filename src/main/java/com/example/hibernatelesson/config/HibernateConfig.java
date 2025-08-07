@@ -25,4 +25,7 @@ public class HibernateConfig {
     public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
         return entityManagerFactory.createEntityManager();
     }
+
+    //SessionFactory = EntityManagerFactory
+    //Session = EntityManager
 }

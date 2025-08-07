@@ -15,4 +15,4 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   profiles:
-    active: jdbc
+    active: jpa
