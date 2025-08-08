@@ -1,11 +1,11 @@
 package com.example.hibernatelesson.repository.jdbc;
 
 import com.example.hibernatelesson.models.Author;
+import com.example.hibernatelesson.models.DbBeanType;
 import com.example.hibernatelesson.models.jdbc.AuthorJdbc;
 import com.example.hibernatelesson.models.jdbc.BookJdbc;
 import com.example.hibernatelesson.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +17,6 @@ import java.util.function.Function;
 
 @Repository
 @RequiredArgsConstructor
-@Profile(value = "jdbc")
 public class AuthorJdbcRepository implements AuthorRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -54,6 +53,11 @@ public class AuthorJdbcRepository implements AuthorRepository {
         rawResults.forEach(author -> addAuthorToMap(author, merged));
 
         return new ArrayList<>(merged.values());
+    }
+
+    @Override
+    public DbBeanType getDbType() {
+        return DbBeanType.JDBC;
     }
 
     private void addAuthorToMap(AuthorJdbc author, Map<Long, AuthorJdbc> merged) {

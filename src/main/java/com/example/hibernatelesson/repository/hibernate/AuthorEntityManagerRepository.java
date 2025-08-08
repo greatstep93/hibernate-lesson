@@ -1,17 +1,16 @@
 package com.example.hibernatelesson.repository.hibernate;
 
+import com.example.hibernatelesson.models.DbBeanType;
 import com.example.hibernatelesson.models.hibernate.AuthorEntity;
 import com.example.hibernatelesson.repository.AuthorRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-@Profile(value = "hibernate")
 public class AuthorEntityManagerRepository implements AuthorRepository {
 
     private final EntityManager entityManager;
@@ -25,5 +24,10 @@ public class AuthorEntityManagerRepository implements AuthorRepository {
         return entityManager
                 .createQuery(jpql, AuthorEntity.class)
                 .getResultList();
+    }
+
+    @Override
+    public DbBeanType getDbType() {
+        return DbBeanType.HIBERNATE;
     }
 }
